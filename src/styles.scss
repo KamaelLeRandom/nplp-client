@@ -1,2 +1,20 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Importing Bootstrap SCSS file. */
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons.css';
+
+.text-purple {
+  color: #6f42c1 !important;
+  font-weight: bold;
+  font-size: 30px;
+}
+
+.text-pink {
+  color: #e83e8c !important;
+  font-weight: bold;
+}
+
+.background-grey {
+  background-color: #f0f1f0;
+}

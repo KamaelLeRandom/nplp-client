@@ -1,1 +1,59 @@
-<p>nav-bar works!</p>
+<nav class="navbar navbar-expand-lg navbar-light background-grey">
+
+  <div class="container-fluid">
+
+    <a class="navbar-brand text-purple" href="#">N'oubliez pas les Paroles</a>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="#" routerLinkActive="text-pink">Accueil</a>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="#" routerLinkActive="text-pink">Entraînement</a>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="#" routerLinkActive="text-pink">Classement</a>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+
+        <ng-container *ngIf="isConnected">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="#">
+              <i class="bi bi-person-circle"></i>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" routerLink="#">
+              Kamael
+            </a>
+          </li>
+        </ng-container>
+
+
+        <ng-container *ngIf="!isConnected">
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/login">
+                Connexion
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/register">
+                Inscription
+              </a>
+            </li>
+        </ng-container>
+      </ul>
+    </div>
+  </div>
+</nav>
