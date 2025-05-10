@@ -1,0 +1,35 @@
+<div class="card song-card shadow-lg">
+  <div class="card-body">
+    <div class="row">
+      <!-- Partie gauche : infos -->
+      <div class="col-md-6 mb-3">
+        <h4 class="card-title text-highlight">{{ song.title }}</h4>
+
+        <p class="card-text text-muted mb-1">
+          <strong>Auteur{{ song.authors.length > 1 ? 's' : '' }} :</strong> {{ authorList }}
+        </p>
+
+        <p class="card-text text-muted mb-1">
+          <strong>Date de publication :</strong> {{ formattedDate }}
+        </p>
+
+        <p class="card-text text-muted">
+          <strong>Durée :</strong> {{ formattedDuration }}
+        </p>
+
+        <button class="btn btn-toggle mt-3" (click)="toggleLyrics()">
+          {{ showLyrics ? 'Masquer' : 'Afficher' }} les paroles
+        </button>
+
+        <app-cut-list [cuts]="song.cuts"></app-cut-list>
+      </div>
+
+      <!-- Partie droite : paroles -->
+      <div class="col-md-6">
+        <div [hidden]="!showLyrics" class="lyrics-box">
+          <pre class="lyrics-content">{{ song.lyric }}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,40 @@
+.song-card {
+  background-color: #e4c9e0;
+  border-left: 5px solid #e83e8c;
+  border-radius: 1rem;
+  color: #212529;
+  margin: 1rem 0;
+}
+
+.text-highlight {
+  color: #6f42c1;
+}
+
+.btn-toggle {
+  background-color: #6f42c1;
+  color: white;
+  border: none;
+  padding: 0.4em 1em;
+  border-radius: 1.2rem;
+  font-weight: 500;
+}
+
+.btn-toggle:hover {
+  background-color: #5a379e;
+}
+
+.lyrics-box {
+  background-color: white;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  white-space: pre-wrap;
+  color: black;
+  border-left: 3px solid #e83e8c;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.lyrics-content {
+  margin: 0;
+  font-family: 'Courier New', monospace;
+}
