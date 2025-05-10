@@ -7,40 +7,39 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" routerLink="#" routerLinkActive="text-pink">Accueil</a>
+          <a class="nav-link" routerLink="/" routerLinkActive="text-pink">Accueil</a>
         </li>
       </ul>
 
       <ul class="navbar-nav mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" routerLink="#" routerLinkActive="text-pink">Entraînement</a>
+          <a class="nav-link" routerLink="/" routerLinkActive="text-pink">Entraînement</a>
         </li>
       </ul>
 
       <ul class="navbar-nav mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" routerLink="#" routerLinkActive="text-pink">Classement</a>
+          <a class="nav-link" routerLink="/" routerLinkActive="text-pink">Classement</a>
         </li>
       </ul>
 
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 
-        <ng-container *ngIf="isConnected">
+        <ng-container *ngIf="authService.currentPlayerSig()">
           <li class="nav-item">
             <a class="nav-link" routerLink="/profile">
               <i class="bi bi-person-circle"></i>
+              {{ authService.currentPlayerSig()?.name }}
             </a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" routerLink="#">
-              Kamael
-            </a>
+            <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4" (click)="authService.logout()">Déconnexion</button>
           </li>
         </ng-container>
 
 
-        <ng-container *ngIf="!isConnected">
+        <ng-container *ngIf="!authService.currentPlayerSig()">
             <li class="nav-item">
               <a class="nav-link" routerLink="/login">
                 Connexion

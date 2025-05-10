@@ -1,7 +1,8 @@
 import { NgIf } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { NgbTooltipModule } from "@ng-bootstrap/ng-bootstrap";
+import { AuthentificationService } from '../services/authentification-service.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -11,9 +12,7 @@ import { NgbTooltipModule } from "@ng-bootstrap/ng-bootstrap";
   styleUrl: './nav-bar.component.scss'
 })
 export class NavBarComponent {
-  isConnected: boolean;
+  authService = inject(AuthentificationService);
 
-  constructor() {
-    this.isConnected = true;
-  }
+  constructor() { }
 }
