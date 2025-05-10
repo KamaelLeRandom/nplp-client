@@ -4,6 +4,7 @@ import { LoginComponent } from './login/login.component';
 import { SongListComponent } from './component/song/song-list/song-list.component';
 import { SongItemComponent } from './component/song/song-item/song-item.component';
 import { SongDetailComponent } from './component/song/song-detail/song-detail.component';
+import { AuthentificationGuardService } from './services/authentification-guard';
 
 export const routes: Routes = [
   {
@@ -12,14 +13,17 @@ export const routes: Routes = [
   },
   {
     path: 'profile',
+    canActivate: [AuthentificationGuardService],
     component: ProfileComponent,
   },
   {
     path: 'song',
+    canActivate: [AuthentificationGuardService],
     component: SongListComponent,
   },
   {
     path: 'song/:id',
+    canActivate: [AuthentificationGuardService],
     component: SongDetailComponent,
   }
 ];
