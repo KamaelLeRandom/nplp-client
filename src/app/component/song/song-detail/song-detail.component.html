@@ -1,5 +1,6 @@
 <div class="card song-card shadow-lg">
   <div class="card-body">
+
     <div class="row">
       <!-- Partie gauche : infos -->
       <div class="col-md-6 mb-3">
@@ -16,6 +17,15 @@
         <p class="card-text text-muted">
           <strong>Durée :</strong> {{ formattedDuration }}
         </p>
+
+        <div *ngIf="authService.isAdmin()" class="d-flex justify-content-start mb-2">
+          <button class="btn btn-outline-primary btn-sm me-2">
+            <i class="bi bi-pencil"></i>
+          </button>
+          <button class="btn btn-outline-danger btn-sm">
+            <i class="bi bi-trash"></i>
+          </button>
+        </div>
 
         <button class="btn btn-toggle mt-3" (click)="toggleLyrics()">
           {{ showLyrics ? 'Masquer' : 'Afficher' }} les paroles

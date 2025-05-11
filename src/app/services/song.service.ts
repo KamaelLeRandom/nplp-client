@@ -19,4 +19,12 @@ export class SongService {
   getSongById(id: number): Observable<SongInterface> {
     return this.http.get<SongInterface>(`${this.baseUrl}/${id}`);
   }
+
+  postSong(song: SongInterface) {
+    return this.http.post(`${this.baseUrl}/create`, song);
+  }
+
+  editSong(song: SongInterface) {
+    return this.http.put(`${this.baseUrl}/update/${song.id}`, song)
+  }
 }

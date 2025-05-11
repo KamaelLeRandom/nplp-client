@@ -1,5 +1,5 @@
 export interface SongInterface {
-  id: number;
+  id?: number;
   title: string;
   lyric: string;
   publishAt: Date;

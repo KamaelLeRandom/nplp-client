@@ -2,9 +2,10 @@ import { Routes } from '@angular/router';
 import { ProfileComponent } from './profile/profile.component';
 import { LoginComponent } from './login/login.component';
 import { SongListComponent } from './component/song/song-list/song-list.component';
-import { SongItemComponent } from './component/song/song-item/song-item.component';
 import { SongDetailComponent } from './component/song/song-detail/song-detail.component';
 import { AuthentificationGuardService } from './services/authentification-guard';
+import { SongFormComponent } from './component/song/song-form/song-form.component';
+import { SongEditComponent } from './component/song/song-edit/song-edit.component';
 
 export const routes: Routes = [
   {
@@ -13,17 +14,22 @@ export const routes: Routes = [
   },
   {
     path: 'profile',
-    canActivate: [AuthentificationGuardService],
+    // canActivate: [AuthentificationGuardService],
     component: ProfileComponent,
   },
   {
     path: 'song',
-    canActivate: [AuthentificationGuardService],
+    // canActivate: [AuthentificationGuardService],
     component: SongListComponent,
   },
   {
     path: 'song/:id',
-    canActivate: [AuthentificationGuardService],
+    // canActivate: [AuthentificationGuardService],
     component: SongDetailComponent,
+  },
+  {
+    path: 'song/:id/edit',
+    // canActivate: [AuthentificationGuardService],
+    component: SongEditComponent,
   }
 ];

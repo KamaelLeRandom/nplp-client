@@ -2,10 +2,12 @@ import { Component, inject, Inject, Input, input, OnInit } from '@angular/core';
 import { SongInterface } from '../../../model/song-interface';
 import { SongService } from '../../../services/song.service';
 import { CutListComponent } from '../cut-list/cut-list.component';
+import { AuthentificationService } from '../../../services/authentification-service.service';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-song-detail',
-  imports: [CutListComponent],
+  imports: [CutListComponent, NgIf],
   templateUrl: './song-detail.component.html',
   styleUrl: './song-detail.component.scss'
 })
@@ -13,13 +15,13 @@ export class SongDetailComponent implements OnInit {
   id = input.required<string>();
   song: SongInterface = {} as SongInterface;
   songService = inject(SongService);
+  authService = inject(AuthentificationService)
   showLyrics: boolean = false;
 
   ngOnInit(): void {
     this.songService.getSongById(Number(this.id()))
       .subscribe(({
         next: (response) => {
-          console.log(response);
           this.song = response;
         },
         error: (error) => {

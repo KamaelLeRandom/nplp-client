@@ -13,6 +13,15 @@ export class AuthentificationService {
 
   constructor(private http: HttpClient) { }
 
+  isAdmin(): boolean {
+    if (this.currentPlayerSig() !== undefined && this.currentPlayerSig !== null) {
+      if (this.currentPlayerSig()?.role == "ROLE_ADMIN") {
+        return true;
+      }
+    }
+    return false;
+  }
+
   register() {
 
   }

@@ -1,0 +1,30 @@
+<form [formGroup]="songForm" (ngSubmit)="submitForm()" class="p-3 bg-light rounded shadow-sm">
+  <div class="mb-3">
+    <label class="form-label">Titre*</label>
+    <input formControlName="title" [class.invalid]="songForm.get('title')?.invalid && (songForm.get('title')?.dirty || songForm.get('title')?.touched)" class="form-control" placeholder="Titre de la chanson" />
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Paroles*</label>
+    <textarea formControlName="lyric" class="form-control" rows="5" placeholder="Paroles..."></textarea>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Date de publication*</label>
+    <input formControlName="publishAt" type="date" class="form-control" />
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Durée (sous le format 'min.sec')*</label>
+    <input formControlName="duration" type="number" class="form-control" />
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Auteurs*</label>
+    <select formControlName="authors" class="form-select" multiple>
+      <option *ngFor="let author of authorList" [value]="author.id">{{ author.nickname }}</option>
+    </select>
+  </div>
+
+  <button type="submit" class="btn btn-primary mt-3">Valider les modifications</button>
+</form>
