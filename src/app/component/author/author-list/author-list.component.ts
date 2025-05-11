@@ -1,24 +1,24 @@
 import { Component, inject } from '@angular/core';
-import { SongService } from '../../../services/song.service';
-import { SongInterface } from '../../../model/song-interface';
-import { SongItemComponent } from '../song-item/song-item.component';
+import { AuthorItemComponent } from '../author-item/author-item.component';
 import { NgFor, NgIf } from '@angular/common';
-import { FormsModule, NgModel } from '@angular/forms';
+import { AuthorInterface } from '../../../model/author-interface';
 import { AuthentificationService } from '../../../services/authentification-service.service';
 import { Router } from '@angular/router';
+import { AuthorService } from '../../../services/author.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-song-list', 
+  selector: 'app-author-list',
   standalone: true,
-  imports: [SongItemComponent, FormsModule, NgFor, NgIf],
-  templateUrl: './song-list.component.html',
-  styleUrl: './song-list.component.scss'
+  imports: [AuthorItemComponent, FormsModule, NgIf, NgFor],
+  templateUrl: './author-list.component.html',
+  styleUrl: './author-list.component.scss'
 })
-export class SongListComponent {
+export class AuthorListComponent {
   router = inject(Router);
   authService = inject(AuthentificationService);
-  songList: SongInterface[] = [];
-  songService = inject(SongService);
+  authorList: AuthorInterface[] = [];
+  authorService = inject(AuthorService);
 
   searchInput: string = '';
   searchQuery: string = '';
@@ -28,27 +28,28 @@ export class SongListComponent {
   pageSize: number = 10;
 
   constructor() {
-    this.fetchSongs();
+    this.fetchAuthors();
   }
 
-  fetchSongs() {
-    this.songService.getSongs(this.currentPage, this.pageSize, this.searchQuery)
-      .subscribe({
+  fetchAuthors() {
+    this.authorService.getAuthors(this.currentPage, this.pageSize, this.searchQuery)
+      .subscribe(({
         next: (response: any) => {
-          this.songList = response.songs;
+          this.authorList = response.songs;
           this.totalPages = response.totalPages;
         },
         error: (error) => {
           console.error(error);
-          this.songList = [];
+          this.authorList = [];
         }
-      });
+      }))
+    ;
   }
 
   applySearch() {
     this.searchQuery = this.searchInput.trim().toLowerCase();
     this.currentPage = 1;
-    this.fetchSongs();
+    this.fetchAuthors();
   }
 
   changePage(page: number): void {
@@ -57,7 +58,7 @@ export class SongListComponent {
     }
 
     this.currentPage = page;
-    this.fetchSongs();
+    this.fetchAuthors();
   }
 
   onCreateClick() {

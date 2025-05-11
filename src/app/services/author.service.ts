@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AuthorInterface } from '../model/author-interface';
@@ -14,5 +14,16 @@ export class AuthorService {
 
   getAllAuthor(): Observable<AuthorInterface[]> {
     return this.http.get<AuthorInterface[]>(`${this.baseUrl}`);
+  }
+
+  getAuthors(page: number, size: number, search?: string): Observable<AuthorInterface[]> {
+    let params = new HttpParams()
+      .set('page', page.toString())
+      .set('size', size.toString());
+    if (search) {
+      params = params.set('search', search);
+    }
+
+    return this.http.get<AuthorInterface[]>(`${this.baseUrl}/filter`, { params });
   }
 }

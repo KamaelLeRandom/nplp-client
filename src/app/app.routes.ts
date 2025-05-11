@@ -10,6 +10,7 @@ import { ErrorPageComponent } from './component/error/error-page/error-page.comp
 import { CutEditComponent } from './component/song/cut-edit/cut-edit.component';
 import { CutAddComponent } from './component/song/cut-add/cut-add.component';
 import { SongAddComponent } from './component/song/song-add/song-add.component';
+import { AuthorListComponent } from './component/author/author-list/author-list.component';
 
 export const routes: Routes = [
   {
@@ -54,5 +55,10 @@ export const routes: Routes = [
     path: 'cut/create',
     // canActivate: [AuthentificationGuardAdminService],
     component: CutAddComponent,
-  }
+  },
+  {
+    path: 'author',
+    // canActivate: [AuthentificationGuardService],
+    component: AuthorListComponent,
+  },
 ];
