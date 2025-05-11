@@ -39,8 +39,8 @@ export class SongFormComponent implements OnInit {
     this.songForm.patchValue({
       title: this.song.title,
       lyric: this.song.lyric,
-      publishAt: this.song.publishAt.toString(),
-      duration: this.song.duration.toString(),
+      publishAt: this.song.publishAt?.toString(),
+      duration: this.song.duration?.toString(),
     });
 
     this.authorService.getAllAuthor()

@@ -1,8 +1,7 @@
 <div class="card song-card shadow-lg">
   <div class="card-body">
-
     <div class="row">
-      <div class="col-md-6 mb-3">
+      <div class="col-md-6 mb-4">
         <h4 class="card-title text-highlight">{{ song.title }}</h4>
 
         <p class="card-text text-muted mb-1">
@@ -13,11 +12,11 @@
           <strong>Date de publication :</strong> {{ formattedDate }}
         </p>
 
-        <p class="card-text text-muted">
+        <p class="card-text text-muted mb-2">
           <strong>Durée :</strong> {{ formattedDuration }}
         </p>
 
-        <div *ngIf="authService.isAdmin()" class="d-flex justify-content-start mb-2">
+        <div *ngIf="authService.isAdmin()" class="d-flex justify-content-start mb-3">
           <button class="btn btn-outline-primary btn-sm me-2" (click)="onEditClick()">
             <i class="bi bi-pencil"></i>
           </button>
@@ -26,17 +25,17 @@
           </button>
         </div>
 
-        <button class="btn btn-toggle mt-3" (click)="toggleLyrics()">
+        <button class="btn btn-toggle mb-3" (click)="toggleLyrics()">
           {{ showLyrics ? 'Masquer' : 'Afficher' }} les paroles
         </button>
 
-        <app-cut-list [cuts]="song.cuts"></app-cut-list>
-      </div>
-
-      <div class="col-md-6">
         <div [hidden]="!showLyrics" class="lyrics-box">
           <pre class="lyrics-content">{{ song.lyric }}</pre>
         </div>
+      </div>
+
+      <div class="col-md-6">
+        <app-cut-list [cuts]="song.cuts"></app-cut-list>
       </div>
     </div>
   </div>

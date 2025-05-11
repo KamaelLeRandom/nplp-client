@@ -9,6 +9,7 @@ import { SongEditComponent } from './component/song/song-edit/song-edit.componen
 import { ErrorPageComponent } from './component/error/error-page/error-page.component';
 import { CutEditComponent } from './component/song/cut-edit/cut-edit.component';
 import { CutAddComponent } from './component/song/cut-add/cut-add.component';
+import { SongAddComponent } from './component/song/song-add/song-add.component';
 
 export const routes: Routes = [
   {
@@ -28,6 +29,11 @@ export const routes: Routes = [
     path: 'song',
     // canActivate: [AuthentificationGuardService],
     component: SongListComponent,
+  },
+  {
+    path: 'song/create',
+    // canActivate: [AuthentificationGuardAdminService],
+    component: SongAddComponent,
   },
   {
     path: 'song/:id',
