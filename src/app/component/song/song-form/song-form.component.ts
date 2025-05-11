@@ -36,7 +36,6 @@ export class SongFormComponent implements OnInit {
   selectedAuthors: AuthorInterface[] = [];
 
   ngOnInit(): void {
-    console.log('song', this.song);
     this.songForm.patchValue({
       title: this.song.title,
       lyric: this.song.lyric,
@@ -58,7 +57,7 @@ export class SongFormComponent implements OnInit {
           });
         },
         error: (error) => {
-
+          console.error(error);
         }
       }))
   }

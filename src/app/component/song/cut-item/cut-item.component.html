@@ -1,6 +1,15 @@
-<div class="cut-item p-3 mb-3 rounded border">
+<div class="cut-item p-3 mb-3 rounded border position-relative">
   <div class="d-flex justify-content-between align-items-start mb-2">
     <span class="badge bg-purple">{{ cut.difficulty.libelle }} - {{ cut.difficulty.point }} points</span>
+
+      <div *ngIf="authService.isAdmin()" class="btn-group btn-group-sm gap-2">
+        <button class="btn btn-outline-danger" (click)="onDeleteClick()">
+          <i class="bi bi-trash"></i>
+        </button>
+        <button class="btn btn-outline-primary" (click)="onEditClick()">
+          <i class="bi bi-pencil"></i>
+        </button>
+      </div>
   </div>
 
   <div class="lyrics-line">
@@ -16,6 +25,6 @@
       </span>
     </div>
 
-    <div class="after">{{ cut.afterLyric }}</div>
+    <div class="after mt-2">{{ cut.afterLyric }}</div>
   </div>
 </div>

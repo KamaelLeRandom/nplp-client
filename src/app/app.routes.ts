@@ -7,6 +7,7 @@ import { AuthentificationGuardService } from './services/authentification-guard'
 import { SongFormComponent } from './component/song/song-form/song-form.component';
 import { SongEditComponent } from './component/song/song-edit/song-edit.component';
 import { ErrorPageComponent } from './component/error/error-page/error-page.component';
+import { CutEditComponent } from './component/song/cut-edit/cut-edit.component';
 
 export const routes: Routes = [
   {
@@ -36,5 +37,10 @@ export const routes: Routes = [
     path: 'song/:id/edit',
     // canActivate: [AuthentificationGuardService],
     component: SongEditComponent,
+  },
+  {
+    path: 'cut/:id/edit',
+    // canActivate: [AuthentificationGuardAdminService],
+    component: CutEditComponent,
   }
 ];

@@ -1,0 +1,40 @@
+<form [formGroup]="cutForm" (ngSubmit)="submitForm()" class="p-3 bg-light rounded shadow-sm border">
+  <div class="mb-3">
+    <label class="form-label text-highlight">Paroles avant*</label>
+    <textarea formControlName="beforeLyric" rows="3" class="form-control" placeholder="Paroles avant..."></textarea>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label text-highlight">Paroles cherchées*</label>
+    <input formControlName="searchLyric" type="text" class="form-control" placeholder="Paroles à trouver..." />
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label text-highlight">Paroles après*</label>
+    <textarea formControlName="afterLyric" rows="3" class="form-control" placeholder="Paroles après..."></textarea>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label text-highlight">Chanson liée*</label>
+    <select formControlName="song" class="form-select">
+      <option [ngValue]="null" disabled>-- Sélectionner une chanson --</option>
+      <option *ngFor="let song of songList" [ngValue]="song.id">{{ song.title }}</option>
+    </select>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label text-highlight">Difficulté*</label>
+    <select formControlName="difficulty" class="form-select">
+      <option [ngValue]="null" disabled>-- Choisir une difficulté --</option>
+      <option *ngFor="let diff of difficultyList" [ngValue]="diff.id">
+        {{ diff.libelle }} ({{ diff.point }} pts)
+      </option>
+    </select>
+  </div>
+
+  <div class="text-end">
+    <button type="submit" class="btn btn-purple">
+      {{ cut?.id !== -1 ? 'Mettre à jour' : 'Créer' }} la coupure
+    </button>
+  </div>
+</form>
