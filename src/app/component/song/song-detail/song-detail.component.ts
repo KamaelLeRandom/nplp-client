@@ -27,6 +27,7 @@ export class SongDetailComponent implements OnInit {
           this.song = response;
         },
         error: (error) => {
+          this.router.navigateByUrl('/error', { state: { reason: 'Song not found' } });
           console.log(error);
         },
       }))
@@ -39,7 +40,7 @@ export class SongDetailComponent implements OnInit {
   onEditClick(): void {
     const confirmed = window.confirm(`Voulez-vous vraiment editer "${this.song.title}" ?`);
     if (confirmed) {
-      this.router.navigateByUrl(`/song/${this.id}/edit`);
+      this.router.navigateByUrl(`/song/${this.id()}/edit`);
     }
   }
 

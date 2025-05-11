@@ -6,11 +6,16 @@ import { SongDetailComponent } from './component/song/song-detail/song-detail.co
 import { AuthentificationGuardService } from './services/authentification-guard';
 import { SongFormComponent } from './component/song/song-form/song-form.component';
 import { SongEditComponent } from './component/song/song-edit/song-edit.component';
+import { ErrorPageComponent } from './component/error/error-page/error-page.component';
 
 export const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
+  },
+  {
+    path: 'error',
+    component: ErrorPageComponent,
   },
   {
     path: 'profile',

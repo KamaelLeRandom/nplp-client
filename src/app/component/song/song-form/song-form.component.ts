@@ -16,7 +16,7 @@ import { Router } from '@angular/router';
   styleUrl: './song-form.component.scss'
 })
 export class SongFormComponent implements OnInit {
-  @Input() id!: string;
+  @Input() song!: SongInterface;
   @Output() onSubmit = new EventEmitter<any>();
 
   songService = inject(SongService);
@@ -34,38 +34,33 @@ export class SongFormComponent implements OnInit {
   authorSearch = '';
   filteredAuthors: AuthorInterface[] = [];
   selectedAuthors: AuthorInterface[] = [];
-  song: SongInterface = {} as SongInterface;
 
   ngOnInit(): void {
-    forkJoin({
-      authors: this.authorService.getAllAuthor(),
-      song: this.songService.getSongById(Number(this.id))
-    }).subscribe({
-      next: ({ authors, song }) => {
-        this.authorList = authors;
-        this.song = song;
+    console.log('song', this.song);
+    this.songForm.patchValue({
+      title: this.song.title,
+      lyric: this.song.lyric,
+      publishAt: this.song.publishAt.toString(),
+      duration: this.song.duration.toString(),
+    });
 
-        if (authors !== null && song !== null) {
-          this.songForm.patchValue({
-            title: song.title,
-            lyric: song.lyric,
-            publishAt: song.publishAt.toString(),
-            duration: song.duration.toString(),
-          });
+    this.authorService.getAllAuthor()
+      .subscribe(({
+        next: (response) => {
+          this.authorList = response;
 
           this.selectedAuthors = this.authorList.filter(author =>
-            song.authors.some((a: any) => a.id === author.id)
+            this.song.authors.some((a: any) => a.id === author.id)
           );
 
           this.songForm.patchValue({
             authors: this.selectedAuthors.map(a => a.id) as any
           });
+        },
+        error: (error) => {
+
         }
-      },
-      error: (error) => {
-        console.log('error', error);
-      }
-    });
+      }))
   }
 
   submitForm() {

@@ -1,30 +1,47 @@
-<form [formGroup]="songForm" (ngSubmit)="submitForm()" class="p-3 bg-light rounded shadow-sm">
+<form [formGroup]="songForm" (ngSubmit)="submitForm()" class="p-4 bg-light rounded shadow-sm">
   <div class="mb-3">
-    <label class="form-label">Titre*</label>
+    <label class="form-label text-highlight">Titre*</label>
     <input formControlName="title" [class.invalid]="songForm.get('title')?.invalid && (songForm.get('title')?.dirty || songForm.get('title')?.touched)" class="form-control" placeholder="Titre de la chanson" />
+    <div *ngIf="songForm.get('title')?.invalid && (songForm.get('title')?.dirty || songForm.get('title')?.touched)" class="text-danger">
+      Le titre est requis.
+    </div>
   </div>
 
   <div class="mb-3">
-    <label class="form-label">Paroles*</label>
+    <label class="form-label text-highlight">Paroles*</label>
     <textarea formControlName="lyric" class="form-control" rows="5" placeholder="Paroles..."></textarea>
+    <div *ngIf="songForm.get('lyric')?.invalid && (songForm.get('lyric')?.dirty || songForm.get('lyric')?.touched)" class="text-danger">
+      Les paroles sont requises.
+    </div>
   </div>
 
   <div class="mb-3">
-    <label class="form-label">Date de publication*</label>
+    <label class="form-label text-highlight">Date de publication*</label>
     <input formControlName="publishAt" type="date" class="form-control" />
+    <div *ngIf="songForm.get('publishAt')?.invalid && (songForm.get('publishAt')?.dirty || songForm.get('publishAt')?.touched)" class="text-danger">
+      La date de publication est requise.
+    </div>
   </div>
 
   <div class="mb-3">
-    <label class="form-label">Durée (sous le format 'min.sec')*</label>
+    <label class="form-label text-highlight">Durée (sous le format 'min.sec')*</label>
     <input formControlName="duration" type="number" class="form-control" />
+    <div *ngIf="songForm.get('duration')?.invalid && (songForm.get('duration')?.dirty || songForm.get('duration')?.touched)" class="text-danger">
+      La durée est requise et doit être un nombre valide.
+    </div>
   </div>
 
   <div class="mb-3">
-    <label class="form-label">Auteurs*</label>
+    <label class="form-label text-highlight">Auteurs*</label>
     <select formControlName="authors" class="form-select" multiple>
       <option *ngFor="let author of authorList" [value]="author.id">{{ author.nickname }}</option>
     </select>
+    <div *ngIf="songForm.get('authors')?.invalid && (songForm.get('authors')?.dirty || songForm.get('authors')?.touched)" class="text-danger">
+      Sélectionnez au moins un auteur.
+    </div>
   </div>
 
-  <button type="submit" class="btn btn-primary mt-3">Valider les modifications</button>
+  <button type="submit" class="btn btn-primary mt-3" [disabled]="songForm.invalid">
+    {{ song ? 'Mettre à jour' : 'Créer' }} la chanson
+  </button>
 </form>

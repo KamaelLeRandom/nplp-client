@@ -1,6 +1,13 @@
-<div>
+<div *ngIf="loading">
+  <div class="loading-spinner">
+    <div class="spinner"></div>
+    <span>Chargement en cours...</span>
+  </div>
+</div>
+
+<div *ngIf="!loading && song">
   <app-song-form 
-    [id]="id"
+    [song]="song"
     (onSubmit)="onSubmit($event)"
   />
 </div>
