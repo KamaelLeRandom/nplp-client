@@ -4,6 +4,7 @@ import { SongService } from '../../../services/song.service';
 import { CutListComponent } from '../cut-list/cut-list.component';
 import { AuthentificationService } from '../../../services/authentification-service.service';
 import { NgIf } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-song-detail',
@@ -16,6 +17,7 @@ export class SongDetailComponent implements OnInit {
   song: SongInterface = {} as SongInterface;
   songService = inject(SongService);
   authService = inject(AuthentificationService)
+  router = inject(Router);
   showLyrics: boolean = false;
 
   ngOnInit(): void {
@@ -32,6 +34,29 @@ export class SongDetailComponent implements OnInit {
 
   toggleLyrics(): void {
     this.showLyrics = !this.showLyrics;
+  }
+
+  onEditClick(): void {
+    const confirmed = window.confirm(`Voulez-vous vraiment editer "${this.song.title}" ?`);
+    if (confirmed) {
+      this.router.navigateByUrl(`/song/${this.id}/edit`);
+    }
+  }
+
+  onDeleteClick(): void {
+    const confirmed = window.confirm(`Voulez-vous vraiment supprimer "${this.song.title}" ? (cette action est irréversible)`);
+
+    if (confirmed && !isNaN(Number(this.id()))) {
+      this.songService.deleteSong(Number(this.id()))
+        .subscribe(({
+          next: (response) => {
+            this.router.navigateByUrl(`/song`)
+          },
+          error: (error) => {
+            console.log(error);
+          }
+        }))
+    }
   }
 
   get formattedDate(): string {

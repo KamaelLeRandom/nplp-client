@@ -27,4 +27,8 @@ export class SongService {
   editSong(song: SongInterface) {
     return this.http.put(`${this.baseUrl}/update/${song.id}`, song)
   }
+
+  deleteSong(id: number) {
+    return this.http.delete(`${this.baseUrl}/delete/${id}`)
+  }
 }
