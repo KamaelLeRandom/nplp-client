@@ -14,6 +14,7 @@ import { AuthorListComponent } from './component/author/author-list/author-list.
 import { AuthorDetailsComponent } from './component/author/author-details/author-details.component';
 import { AuthorAddComponent } from './component/author/author-add/author-add.component';
 import { AuthorEditComponent } from './component/author/author-edit/author-edit.component';
+import { LeaderboardComponent } from './component/leaderboard/leaderboard.component';
 
 export const routes: Routes = [
   {
@@ -28,6 +29,11 @@ export const routes: Routes = [
     path: 'profile',
     // canActivate: [AuthentificationGuardService],
     component: ProfileComponent,
+  },
+  {
+    path: 'leaderboard',
+    // canActivate: [AuthentificationGuardService],
+    component: LeaderboardComponent,
   },
   {
     path: 'song',

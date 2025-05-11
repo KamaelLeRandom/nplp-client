@@ -1,0 +1,62 @@
+.leaderboard {
+  background: linear-gradient(135deg, #f8f0fa, #fce3ec);
+  border-radius: 1rem;
+  border: 1px solid #e4c9e0;
+}
+
+.podium {
+  gap: 2rem;
+}
+
+.podium-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.circle {
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  font-size: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.gold {
+  width: 90px;
+  height: 90px;
+  background-color: #ffdd57;
+  color: #6f42c1;
+  font-weight: bold;
+}
+
+.silver {
+  background-color: #d4d4d4;
+  color: #6f42c1;
+}
+
+.bronze {
+  background-color: #e5b07d;
+  color: #fff;
+}
+
+.player-name {
+  font-weight: 600;
+  color: #6f42c1;
+  margin: 0;
+}
+
+.player-score {
+  font-size: 0.9rem;
+  color: #8a4a94;
+  margin: 0;
+}
+
+.bg-pink {
+  background-color: #e83e8c;
+  color: white;
+}
