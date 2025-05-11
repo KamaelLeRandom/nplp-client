@@ -40,6 +40,7 @@ export class AuthorDetailsComponent implements OnInit {
   onEditClick(): void {
     const confirmed = window.confirm(`Voulez-vous vraiment editer "${this.author.nickname}" ?`);
     if (confirmed) {
+      this.router.navigateByUrl(`/author/${this.id()}/edit`);
     }
   }
 
@@ -47,6 +48,15 @@ export class AuthorDetailsComponent implements OnInit {
     const confirmed = window.confirm(`Voulez-vous vraiment supprimer "${this.author.nickname}" ? (cette action est irréversible)`);
 
     if (confirmed && !isNaN(Number(this.id()))) {
+      this.authorService.deleteAuthor(Number(this.id()))
+        .subscribe(({
+          next: (response) => {
+            this.router.navigateByUrl(`/author`)
+          },
+          error: (error) => {
+            console.log(error);
+          }
+        }))
     }
   }
 

@@ -7,7 +7,7 @@
       style="width: 100px; height: 100px; object-fit: cover;"
     />
 
-    <div>
+    <div class="flex-grow-1">
       <h3 class="text-highlight mb-1">{{ author.nickname }}</h3>
       <p class="mb-1 text-muted">
         {{ author.firstname }} {{ author.lastname }}
@@ -15,9 +15,19 @@
       <p class="text-muted">
         Né(e) le {{ formattedDate }}
       </p>
-      <span class="badge bg-purple">
+      <span class="badge bg-purple mb-2">
         {{ author.songs.length }} chanson{{ author.songs.length > 1 ? 's' : '' }}
       </span>
+
+      <!-- Boutons admin -->
+      <div *ngIf="authService.isAdmin()" class="mt-3 d-flex gap-2">
+        <button class="btn btn-outline-primary btn-sm" (click)="onEditClick()">
+          <i class="bi bi-pencil me-1"></i> Éditer
+        </button>
+        <button class="btn btn-outline-danger btn-sm" (click)="onDeleteClick()">
+          <i class="bi bi-trash me-1"></i> Supprimer
+        </button>
+      </div>
     </div>
   </div>
 </div>
@@ -27,7 +37,7 @@
   <div *ngIf="author.songs.length > 0; else noSongs">
     <app-song-item *ngFor="let song of author.songs" [song]="song"></app-song-item>
   </div>
-   <ng-template #noSongs>
+  <ng-template #noSongs>
     <p class="text-muted">Aucune chanson associée.</p>
   </ng-template>
 </div>

@@ -20,7 +20,6 @@ export class SongEditComponent implements OnInit {
     loading: boolean = true;
 
     ngOnInit(): void {
-      console.log('id', this.id);
       if (isNaN(Number(this.id))) {
         this.router.navigateByUrl('/error', { state: { reason: 'Identifiant de chanson invalide' } })
       }

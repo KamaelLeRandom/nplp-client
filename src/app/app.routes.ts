@@ -13,6 +13,7 @@ import { SongAddComponent } from './component/song/song-add/song-add.component';
 import { AuthorListComponent } from './component/author/author-list/author-list.component';
 import { AuthorDetailsComponent } from './component/author/author-details/author-details.component';
 import { AuthorAddComponent } from './component/author/author-add/author-add.component';
+import { AuthorEditComponent } from './component/author/author-edit/author-edit.component';
 
 export const routes: Routes = [
   {
@@ -72,5 +73,10 @@ export const routes: Routes = [
     path: 'author/:id',
     // canActivate: [AuthentificationGuardService],
     component: AuthorDetailsComponent,
+  },
+  {
+    path: 'author/:id/edit',
+    // canActivate: [AuthentificationGuardService],
+    component: AuthorEditComponent,
   },
 ];
