@@ -1,10 +1,11 @@
 import { Component, Input } from '@angular/core';
 import { SongInterface } from '../../../model/song-interface';
 import { RouterLink } from '@angular/router';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-song-item',
-  imports: [RouterLink],
+  imports: [RouterLink, NgIf],
   templateUrl: './song-item.component.html',
   styleUrl: './song-item.component.scss'
 })

@@ -1,0 +1,50 @@
+.author-detail-card {
+  background-color: #e4c9e0;
+  border-left: 5px solid #e83e8c;
+  border-radius: 1rem;
+  color: #212529;
+  margin: 1rem 0;
+}
+
+.text-highlight {
+  color: #6f42c1;
+}
+
+.badge.bg-purple {
+  background-color: #6f42c1;
+  color: white;
+}
+
+.song-line {
+  background-color: #e4c9e0;
+  border-left: 4px solid #e83e8c;
+  color: #f8f9fa;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 0.25rem 0.75rem rgba(0,0,0,0.2);
+}
+
+.duration-badge {
+  background-color: #6f42c1;
+  color: #fff;
+  font-size: 0.85rem;
+  padding: 0.4em 0.8em;
+  border-radius: 1rem;
+}
+
+.no-underline {
+  text-decoration: none;
+}
+
+.btn-toggle {
+  background-color: #6f42c1;
+  color: white;
+  border: none;
+  padding: 0.4em 1em;
+  border-radius: 1.2rem;
+  font-weight: 500;
+}
+
+.btn-toggle:hover {
+  background-color: #5a379e;
+}

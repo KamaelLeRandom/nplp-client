@@ -1,0 +1,69 @@
+<div class="card shadow-sm p-4 author-form-card">
+  <form (ngSubmit)="submitForm()" [formGroup]="authorForm">
+    <h4 class="text-highlight mb-3">Informations de l'Auteur</h4>
+    
+    <div class="mb-3">
+      <label for="lastname" class="form-label">Nom de famille</label>
+      <input 
+        type="text" 
+        class="form-control" 
+        id="lastname" 
+        formControlName="lastname"
+        [ngClass]="{'is-invalid': authorForm.get('lastname')?.touched && authorForm.get('lastname')?.invalid}" 
+      />
+      <div *ngIf="authorForm.get('lastname')?.touched && authorForm.get('lastname')?.invalid" class="text-danger">
+        Le nom de famille est requis.
+      </div>
+    </div>
+    
+    <div class="mb-3">
+      <label for="firstname" class="form-label">Prénom</label>
+      <input 
+        type="text" 
+        class="form-control" 
+        id="firstname" 
+        formControlName="firstname"
+        [ngClass]="{'is-invalid': authorForm.get('firstname')?.touched && authorForm.get('firstname')?.invalid}" 
+      />
+      <div *ngIf="authorForm.get('firstname')?.touched && authorForm.get('firstname')?.invalid" class="text-danger">
+        Le prénom est requis.
+      </div>
+    </div>
+    
+    <div class="mb-3">
+      <label for="nickname" class="form-label">Surnom</label>
+      <input 
+        type="text" 
+        class="form-control" 
+        id="nickname" 
+        formControlName="nickname"
+        [ngClass]="{'is-invalid': authorForm.get('nickname')?.touched && authorForm.get('nickname')?.invalid}" 
+      />
+      <div *ngIf="authorForm.get('nickname')?.touched && authorForm.get('nickname')?.invalid" class="text-danger">
+        Le surnom est requis.
+      </div>
+    </div>
+    
+    <div class="mb-3">
+      <label for="birthday" class="form-label">Date de naissance</label>
+      <input 
+        type="date" 
+        class="form-control" 
+        id="birthday" 
+        formControlName="birthday"
+        [ngClass]="{'is-invalid': authorForm.get('birthday')?.touched && authorForm.get('birthday')?.invalid}" 
+      />
+      <div *ngIf="authorForm.get('birthday')?.touched && authorForm.get('birthday')?.invalid" class="text-danger">
+        La date de naissance est requise.
+      </div>
+    </div>
+
+    <button 
+      type="submit" 
+      [disabled]="authorForm.invalid" 
+      class="btn btn-purple mt-3"
+    >
+      <i class="bi bi-save me-1"></i> Sauvegarder
+    </button>
+  </form>
+</div>

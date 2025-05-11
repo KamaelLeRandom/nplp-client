@@ -1,11 +1,18 @@
 <div class="song-line d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center px-3 py-2">
-  <a [routerLink]="['/song', song.id]" class="no-underline"> 
+  <a [routerLink]="['/song', song.id]" class="no-underline w-100">
     <div class="mb-2 mb-md-0">
       <h5 class="mb-1 text-highlight">{{ song.title }}</h5>
+      
       <small class="text-secondary">
-        Par {{ authorList }} • Publié le {{ formattedDate }}
+        <ng-container *ngIf="song.authors && song.authors.length > 0; else onlyDate">
+          Par {{ authorList }} • Publié le {{ formattedDate }}
+        </ng-container>
+        <ng-template #onlyDate>
+          Publié le {{ formattedDate }}
+        </ng-template>
       </small>
     </div>
+
     <span class="badge duration-badge">{{ formattedDuration }}</span>
   </a>
 </div>

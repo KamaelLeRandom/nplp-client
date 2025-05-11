@@ -11,6 +11,8 @@ import { CutEditComponent } from './component/song/cut-edit/cut-edit.component';
 import { CutAddComponent } from './component/song/cut-add/cut-add.component';
 import { SongAddComponent } from './component/song/song-add/song-add.component';
 import { AuthorListComponent } from './component/author/author-list/author-list.component';
+import { AuthorDetailsComponent } from './component/author/author-details/author-details.component';
+import { AuthorAddComponent } from './component/author/author-add/author-add.component';
 
 export const routes: Routes = [
   {
@@ -60,5 +62,15 @@ export const routes: Routes = [
     path: 'author',
     // canActivate: [AuthentificationGuardService],
     component: AuthorListComponent,
+  },
+  {
+    path: 'author/create',
+    // canActivate: [AuthentificationGuardService],
+    component: AuthorAddComponent,
+  },
+  {
+    path: 'author/:id',
+    // canActivate: [AuthentificationGuardService],
+    component: AuthorDetailsComponent,
   },
 ];

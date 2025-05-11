@@ -26,4 +26,20 @@ export class AuthorService {
 
     return this.http.get<AuthorInterface[]>(`${this.baseUrl}/filter`, { params });
   }
+
+  getAuthorById(id: number): Observable<AuthorInterface> {
+    return this.http.get<AuthorInterface>(`${this.baseUrl}/${id}`);
+  }
+
+  postAuthor(author: AuthorInterface) {
+    return this.http.post(`${this.baseUrl}/create`, author);
+  }
+
+  editAuthor(author: AuthorInterface) {
+    return this.http.put(`${this.baseUrl}/update/${author.id}`, author)
+  }
+    
+  deleteAuthor(id: number) {
+    return this.http.delete(`${this.baseUrl}/delete/${id}`)
+ }
 }

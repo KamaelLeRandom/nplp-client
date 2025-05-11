@@ -1,0 +1,33 @@
+<div class="card shadow-sm p-4 author-detail-card">
+  <div class="d-flex flex-column flex-md-row align-items-start align-items-md-center mb-4">
+    <img
+      src="https://64.media.tumblr.com/ad2d177a7920d159b2219d1f57ca4212/99a902d475c1a44f-4f/s500x750/ba5bb1b0dae495620fbaa84cd10d4f27c9b0e6f3.jpg"
+      alt="Photo de l'auteur"
+      class="rounded-circle me-md-4 mb-3 mb-md-0"
+      style="width: 100px; height: 100px; object-fit: cover;"
+    />
+
+    <div>
+      <h3 class="text-highlight mb-1">{{ author.nickname }}</h3>
+      <p class="mb-1 text-muted">
+        {{ author.firstname }} {{ author.lastname }}
+      </p>
+      <p class="text-muted">
+        Né(e) le {{ formattedDate }}
+      </p>
+      <span class="badge bg-purple">
+        {{ author.songs.length }} chanson{{ author.songs.length > 1 ? 's' : '' }}
+      </span>
+    </div>
+  </div>
+</div>
+
+<div>
+  <h5 class="text-highlight">Liste des chansons</h5>
+  <div *ngIf="author.songs.length > 0; else noSongs">
+    <app-song-item *ngFor="let song of author.songs" [song]="song"></app-song-item>
+  </div>
+   <ng-template #noSongs>
+    <p class="text-muted">Aucune chanson associée.</p>
+  </ng-template>
+</div>

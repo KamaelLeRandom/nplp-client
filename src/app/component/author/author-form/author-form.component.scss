@@ -1,0 +1,39 @@
+.author-form-card {
+  background-color: #f4f4f4;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.text-highlight {
+  color: #6f42c1;
+  font-weight: bold;
+}
+
+input.ng-invalid.ng-touched,
+textarea.ng-invalid.ng-touched,
+select.ng-invalid.ng-touched {
+  border-color: #e83e8c;
+}
+
+.text-danger {
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+button[type="submit"] {
+  background-color: #6f42c1;
+  color: white;
+  font-weight: 500;
+  border-radius: 5px;
+  border: none;
+  padding: 0.5em 1.2em;
+}
+
+button[type="submit"]:disabled {
+  background-color: #ccc;
+}
+
+button[type="submit"]:hover {
+  background-color: #5a379e;
+}
