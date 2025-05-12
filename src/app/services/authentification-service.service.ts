@@ -27,6 +27,7 @@ export class AuthentificationService {
   }
 
   login(name: string, password: string) {
+    localStorage.setItem('token', '');
     this.http
       .post<PlayerInterface>(`${this.baseUrl}/login`, { name, password })
       .subscribe(({
