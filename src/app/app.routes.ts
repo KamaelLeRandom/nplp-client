@@ -15,6 +15,8 @@ import { AuthorDetailsComponent } from './component/author/author-details/author
 import { AuthorAddComponent } from './component/author/author-add/author-add.component';
 import { AuthorEditComponent } from './component/author/author-edit/author-edit.component';
 import { LeaderboardComponent } from './component/leaderboard/leaderboard.component';
+import { GameComponent } from './component/game/game.component';
+import { TrainingComponent } from './component/training/training.component';
 
 export const routes: Routes = [
   {
@@ -24,6 +26,11 @@ export const routes: Routes = [
   {
     path: 'error',
     component: ErrorPageComponent,
+  },
+  {
+    path: 'training',
+    // canActivate: [AuthentificationGuardService],
+    component: TrainingComponent,
   },
   {
     path: 'profile',

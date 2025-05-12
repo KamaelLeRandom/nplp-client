@@ -1,0 +1,13 @@
+<div *ngIf="loading">
+  <div class="loading-spinner">
+    <div class="spinner"></div>
+    <span>Chargement en cours...</span>
+  </div>
+</div>
+
+<div *ngIf="!loading && cut">
+  <app-game 
+    [cut]="cut"
+    (onVictory)="onVictory" 
+  />
+</div>

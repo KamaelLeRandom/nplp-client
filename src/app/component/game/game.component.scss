@@ -1,0 +1,45 @@
+.game-card {
+  background-color: #fdf0f7;
+  border-left: 4px solid #e83e8c;
+  border-radius: 1rem;
+}
+
+.text-highlight {
+  color: #6f42c1;
+}
+
+.bg-purple {
+  background-color: #6f42c1;
+  color: white;
+}
+
+.btn-purple {
+  background-color: #e83e8c;
+  color: white;
+  font-weight: 500;
+  border-radius: 1rem;
+  padding: 0.6em 1.5em;
+  border: none;
+}
+
+.btn-purple:hover {
+  background-color: #d63384;
+}
+
+.text-success {
+  font-weight: bold;
+}
+
+.text-danger {
+  font-style: italic;
+}
+
+.btn-outline-purple {
+  border-color: #6f42c1;
+  color: #6f42c1;
+}
+
+.btn-outline-purple:hover {
+  background-color: #6f42c1;
+  color: white;
+}
