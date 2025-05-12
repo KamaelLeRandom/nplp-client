@@ -47,4 +47,16 @@ export class AuthentificationService {
     this.currentPlayerSig.set(null);
     this.router.navigateByUrl('/login');
   }
+
+  forgotPassword(email: string) {
+    console.log('obj', {email: email});
+    return this.http.post(`${this.baseUrl}/forgot-password`, { email: email });
+  }
+
+  resetPassword(token: string, newPassword: string) {
+    return this.http.post(`${this.baseUrl}/reset-password`, {
+      token,
+      newPassword
+    });
+  }
 }

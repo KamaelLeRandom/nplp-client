@@ -17,6 +17,7 @@ import { AuthorEditComponent } from './component/author/author-edit/author-edit.
 import { LeaderboardComponent } from './component/leaderboard/leaderboard.component';
 import { GameComponent } from './component/game/game.component';
 import { TrainingComponent } from './component/training/training.component';
+import { PasswordResetComponent } from './login/password-reset/password-reset.component';
 
 export const routes: Routes = [
   {
@@ -36,6 +37,10 @@ export const routes: Routes = [
     path: 'profile',
     // canActivate: [AuthentificationGuardService],
     component: ProfileComponent,
+  },
+  {
+    path: 'password-reset',
+    component: PasswordResetComponent,
   },
   {
     path: 'leaderboard',
