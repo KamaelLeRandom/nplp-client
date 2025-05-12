@@ -6,5 +6,6 @@ export interface PlayerInterface {
   createAt: Date;
   lastEditAt: Date;
   role: string;
+  isConfirmed: boolean;
   token: string;
 }

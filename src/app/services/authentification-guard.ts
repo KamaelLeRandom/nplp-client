@@ -14,6 +14,10 @@ export class AuthentificationGuardService implements CanActivate {
       this.router.navigateByUrl('/login');
       return false;
     }
+    if (!this.authService.currentPlayerSig()?.isConfirmed) {
+      this.router.navigateByUrl('/error', { state: { message: "Veuillez confirmer votre email avant d'accèder au site."}} )
+      return false;
+    }
     return true;
   }
 }

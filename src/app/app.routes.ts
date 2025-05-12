@@ -4,7 +4,6 @@ import { LoginComponent } from './login/login.component';
 import { SongListComponent } from './component/song/song-list/song-list.component';
 import { SongDetailComponent } from './component/song/song-detail/song-detail.component';
 import { AuthentificationGuardService } from './services/authentification-guard';
-import { SongFormComponent } from './component/song/song-form/song-form.component';
 import { SongEditComponent } from './component/song/song-edit/song-edit.component';
 import { ErrorPageComponent } from './component/error/error-page/error-page.component';
 import { CutEditComponent } from './component/song/cut-edit/cut-edit.component';
@@ -15,9 +14,9 @@ import { AuthorDetailsComponent } from './component/author/author-details/author
 import { AuthorAddComponent } from './component/author/author-add/author-add.component';
 import { AuthorEditComponent } from './component/author/author-edit/author-edit.component';
 import { LeaderboardComponent } from './component/leaderboard/leaderboard.component';
-import { GameComponent } from './component/game/game.component';
 import { TrainingComponent } from './component/training/training.component';
 import { PasswordResetComponent } from './login/password-reset/password-reset.component';
+import { AuthentificationGuardAdminService } from './services/authentification-guard-admin';
 
 export const routes: Routes = [
   {
@@ -29,72 +28,72 @@ export const routes: Routes = [
     component: ErrorPageComponent,
   },
   {
-    path: 'training',
-    // canActivate: [AuthentificationGuardService],
-    component: TrainingComponent,
-  },
-  {
-    path: 'profile',
-    // canActivate: [AuthentificationGuardService],
-    component: ProfileComponent,
-  },
-  {
     path: 'password-reset',
     component: PasswordResetComponent,
   },
   {
+    path: 'training',
+    canActivate: [AuthentificationGuardService],
+    component: TrainingComponent,
+  },
+  {
+    path: 'profile',
+    canActivate: [AuthentificationGuardService],
+    component: ProfileComponent,
+  },
+  {
     path: 'leaderboard',
-    // canActivate: [AuthentificationGuardService],
+    canActivate: [AuthentificationGuardService],
     component: LeaderboardComponent,
   },
   {
     path: 'song',
-    // canActivate: [AuthentificationGuardService],
+    canActivate: [AuthentificationGuardService],
     component: SongListComponent,
   },
   {
     path: 'song/create',
-    // canActivate: [AuthentificationGuardAdminService],
+    canActivate: [AuthentificationGuardAdminService],
     component: SongAddComponent,
   },
   {
     path: 'song/:id',
-    // canActivate: [AuthentificationGuardService],
+    canActivate: [AuthentificationGuardService],
     component: SongDetailComponent,
   },
   {
     path: 'song/:id/edit',
-    // canActivate: [AuthentificationGuardService],
+    canActivate: [AuthentificationGuardAdminService],
     component: SongEditComponent,
   },
   {
     path: 'cut/:id/edit',
-    // canActivate: [AuthentificationGuardAdminService],
+    canActivate: [AuthentificationGuardAdminService],
     component: CutEditComponent,
   },
   {
     path: 'cut/create',
-    // canActivate: [AuthentificationGuardAdminService],
+    canActivate: [AuthentificationGuardAdminService],
     component: CutAddComponent,
   },
   {
     path: 'author',
-    // canActivate: [AuthentificationGuardService],
+    canActivate: [AuthentificationGuardService],
     component: AuthorListComponent,
   },
   {
     path: 'author/create',
-    // canActivate: [AuthentificationGuardService],
+    canActivate: [AuthentificationGuardAdminService],
     component: AuthorAddComponent,
   },
   {
     path: 'author/:id',
-    // canActivate: [AuthentificationGuardService],
+    canActivate: [AuthentificationGuardService],
     component: AuthorDetailsComponent,
   },
   {
     path: 'author/:id/edit',
-    // canActivate: [AuthentificationGuardService],
+    canActivate: [AuthentificationGuardAdminService],
     component: AuthorEditComponent,
   },
 ];
