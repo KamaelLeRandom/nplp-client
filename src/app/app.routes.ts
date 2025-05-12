@@ -17,11 +17,16 @@ import { LeaderboardComponent } from './component/leaderboard/leaderboard.compon
 import { TrainingComponent } from './component/training/training.component';
 import { PasswordResetComponent } from './login/password-reset/password-reset.component';
 import { AuthentificationGuardAdminService } from './services/authentification-guard-admin';
+import { RegisterComponent } from './login/register/register.component';
 
 export const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
+  },
+  {
+    path: 'register',
+    component: RegisterComponent,
   },
   {
     path: 'error',

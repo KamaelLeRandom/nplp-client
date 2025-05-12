@@ -1,0 +1,24 @@
+.register-form {
+  max-width: 400px;
+  margin: auto;
+  border-radius: 1rem;
+  background: #fafafa;
+
+  h3 {
+    color: #6f42c1;
+  }
+
+  .form-control {
+    border-radius: 0.5rem;
+  }
+
+  .btn-purple {
+    background-color: #6f42c1;
+    color: white;
+    font-weight: 600;
+
+    &:hover {
+      background-color: #5a329e;
+    }
+  }
+}

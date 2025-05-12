@@ -1,0 +1,45 @@
+<div class="register-form card p-4 shadow-sm">
+  <h3 class="text-center mb-4">Créer un compte</h3>
+
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label>Email</label>
+      <input type="email" formControlName="email" class="form-control" />
+      <small *ngIf="formControls.email.errors" class="text-danger">
+        Email invalide ou requis
+      </small>
+    </div>
+
+    <div class="mb-3">
+      <label>Pseudo</label>
+      <input type="text" formControlName="name" class="form-control" />
+      <small *ngIf="formControls.name.errors" class="text-danger">
+        Pseudo requis (min. 3 caractères)
+      </small>
+    </div>
+
+    <div class="mb-3">
+      <label>Mot de passe</label>
+      <input type="password" formControlName="password" class="form-control" />
+      <small *ngIf="formControls.password.errors" class="text-danger">
+        Mot de passe requis (min. 6 caractères)
+      </small>
+    </div>
+
+    <div class="mb-3">
+      <label>Confirmation du mot de passe</label>
+      <input type="password" formControlName="passwordConfirm" class="form-control" />
+      <small *ngIf="!passwordsMatch" class="text-danger">
+        Les mots de passe doivent correspondre
+      </small>
+    </div>
+
+    <button type="submit" class="btn btn-purple w-100">
+      S'inscrire
+    </button>
+
+    <div *ngIf="errorDisplay" class="text-danger mt-3 text-center">
+      {{ errorDisplay }}
+    </div>
+  </form>
+</div>

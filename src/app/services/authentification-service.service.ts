@@ -22,8 +22,8 @@ export class AuthentificationService {
     return false;
   }
 
-  register() {
-
+  register(name: string, email: string, password: string) {
+    return this.http.post<PlayerInterface>(`${this.baseUrl}/register`, { name, email, password });
   }
 
   login(name: string, password: string) {
@@ -31,7 +31,6 @@ export class AuthentificationService {
       .post<PlayerInterface>(`${this.baseUrl}/login`, { name, password })
       .subscribe(({
         next: (response) => {
-          console.log(response);
           localStorage.setItem('token', response.token)
           this.currentPlayerSig.set(response);
           this.router.navigateByUrl('/');
