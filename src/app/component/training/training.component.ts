@@ -3,6 +3,8 @@ import { GameComponent } from '../game/game.component';
 import { CutService } from '../../services/cut.service';
 import { CutInterface } from '../../model/cut-interface';
 import { NgIf } from '@angular/common';
+import { Router } from '@angular/router';
+import { CutTransferService } from '../../services/cut-transfer.service';
 
 @Component({
   selector: 'app-training',
@@ -11,25 +13,20 @@ import { NgIf } from '@angular/common';
   styleUrl: './training.component.scss'
 })
 export class TrainingComponent implements OnInit {
-  cutService = inject(CutService);
+  router = inject(Router);
+  cutTransferService = inject(CutTransferService);
   cut: CutInterface = {} as CutInterface;
   loading: boolean = true;
 
   ngOnInit(): void {
-    this.cutService.getCutById(1)
-      .subscribe(({
-        next: (response) => {
-          console.log('response', response);
-          this.cut = response;
-          this.loading = false;
-        },
-        error: (error) => {
-
-        }
-      }))
+    if (this.cutTransferService.getCut() != null) {
+      this.cut = this.cutTransferService.getCut() as CutInterface;
+      this.cutTransferService.clearCut();
+      this.loading = false;
+    }
   }
   
-  onVictory() {
+  onVictory(numberTry: number, useHint: boolean) {
     console.log('victory');
   }
 }

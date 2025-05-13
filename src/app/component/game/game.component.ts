@@ -23,38 +23,34 @@ export class GameComponent {
   revealInitials: boolean = false;
 
   checkGuess() {
-    console.log('checkGuess', this.cut);
     this.numberTry++;
-    const correctWords = this.cut.searchLyric.trim().split(/\s+/);
-    const guessWords = this.playerGuess.trim().split(/\s+/);
-
-    const markedAttempt = correctWords.map((word, i) => {
-      return guessWords[i] === word ? 'correct' : 'wrong';
-    });
+    const correctWords = this.cut.searchLyric.trim().toLowerCase().split(/\s+/);
+    const guessWords = this.playerGuess.trim().toLowerCase().split(/\s+/);
 
     this.attempts.push(guessWords.map((word, i) => ({
       word,
       status: guessWords[i] === correctWords[i] ? 'correct' : 'wrong'
     })));
 
-    const allCorrect = correctWords.every((word, i) => guessWords[i] === word);
-    this.isCorrect = allCorrect;
+    this.isCorrect = correctWords.every((word, i) => guessWords[i] === word);
     this.resultMessage = this.isCorrect
       ? '✅ Bonne réponse !'
       : '❌ Mauvaise réponse, réessaie.';
 
     if (this.isCorrect) {
-      this.onVictory.emit();
+      this.onVictory.emit({
+        numberTry: this.numberTry,
+        revealInitials: this.revealInitials
+      });
     }
   }
 
-cancelGame() {
-  const confirmed = window.confirm('Es-tu sûr de vouloir quitter la partie ?');
-  if (confirmed) {
-    // Redirige vers le menu principal (adapter selon ta navigation)
-    this.router.navigateByUrl('/');
+  cancelGame() {
+    const confirmed = window.confirm('Es-tu sûr de vouloir quitter la partie ?');
+    if (confirmed) {
+      this.router.navigateByUrl('/');
+    }
   }
-}
 
   get initialsHint(): string[] {
     return this.cut.searchLyric.trim().split(' ').map(word => word.charAt(0).toUpperCase());

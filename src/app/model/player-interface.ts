@@ -1,3 +1,5 @@
+import { ResultInterface } from "./result-interface";
+
 export interface PlayerInterface {
   id: Int32Array;
   name: string;
@@ -8,4 +10,5 @@ export interface PlayerInterface {
   role: string;
   isConfirmed: boolean;
   token: string;
+  results: ResultInterface[];
 }

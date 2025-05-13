@@ -18,6 +18,8 @@ import { TrainingComponent } from './component/training/training.component';
 import { PasswordResetComponent } from './login/password-reset/password-reset.component';
 import { AuthentificationGuardAdminService } from './services/authentification-guard-admin';
 import { RegisterComponent } from './login/register/register.component';
+import { HomeComponent } from './component/home/home.component';
+import { DailyComponent } from './component/daily/daily.component';
 
 export const routes: Routes = [
   {
@@ -37,9 +39,19 @@ export const routes: Routes = [
     component: PasswordResetComponent,
   },
   {
+    path: 'home',
+    canActivate: [AuthentificationGuardService],
+    component: HomeComponent,
+  },
+  {
     path: 'training',
     canActivate: [AuthentificationGuardService],
     component: TrainingComponent,
+  },
+  {
+    path: 'daily',
+    canActivate: [AuthentificationGuardService],
+    component: DailyComponent,
   },
   {
     path: 'profile',

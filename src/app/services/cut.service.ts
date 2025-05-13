@@ -12,23 +12,31 @@ export class CutService {
 
   constructor() { }
 
-    getAllCut(): Observable<CutInterface[]> {
-      return this.http.get<CutInterface[]>(`${this.baseUrl}`);
-    }
+  getAllCut(): Observable<CutInterface[]> {
+    return this.http.get<CutInterface[]>(`${this.baseUrl}`);
+  }
   
-    getCutById(id: number): Observable<CutInterface> {
-      return this.http.get<CutInterface>(`${this.baseUrl}/${id}`);
-    }
+  getCutById(id: number): Observable<CutInterface> {
+    return this.http.get<CutInterface>(`${this.baseUrl}/${id}`);
+  }
+
+  getRandomCutByDifficulty(difficultyId: number): Observable<CutInterface> {
+    return this.http.get<CutInterface>(`${this.baseUrl}/difficulty/${difficultyId}`);
+  }
+
+  getRandomCut(): Observable<CutInterface> {
+    return this.http.get<CutInterface>(`${this.baseUrl}/random`);
+  }
   
-    postCut(cut: CutInterface) {
-      return this.http.post(`${this.baseUrl}/create`, cut);
-    }
+  postCut(cut: CutInterface) {
+    return this.http.post(`${this.baseUrl}/create`, cut);
+  }
   
-    editCut(cut: CutInterface) {
-      return this.http.put(`${this.baseUrl}/update/${cut.id}`, cut)
-    }
+  editCut(cut: CutInterface) {
+    return this.http.put(`${this.baseUrl}/update/${cut.id}`, cut)
+  }
   
-    deleteCut(id: number) {
-      return this.http.delete(`${this.baseUrl}/delete/${id}`)
-    }
+  deleteCut(id: number) {
+    return this.http.delete(`${this.baseUrl}/delete/${id}`)
+  }
 }

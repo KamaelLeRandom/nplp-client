@@ -62,6 +62,6 @@ export class AuthorListComponent {
   }
 
   onCreateClick() {
-    this.router.navigateByUrl('/song/create');
+    this.router.navigateByUrl('/author/create');
   }
 }
