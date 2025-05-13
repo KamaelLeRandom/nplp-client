@@ -1,0 +1,21 @@
+.navbar-toggler {
+  border: none;
+  outline: none;
+
+  &:focus {
+    outline: none;
+    box-shadow: none;
+  }
+}
+
+.navbar-collapse {
+  @media (max-width: 991.98px) {
+    ul.navbar-nav {
+      flex-direction: column;
+
+      .btn {
+        width: 100%;
+      }
+    }
+  }
+}

@@ -1,15 +1,64 @@
 <div class="container mt-5">
   <div class="card">
     <div class="row g-0">
-      <div class="col-md-4 d-flex justify-content-center align-items-center">
-        <img [src]="user.avatarUrl" alt="Avatar" class="img-fluid rounded-circle" style="width: 150px; height: 150px; object-fit: cover;" />
+
+      <div class="col-md-4 d-flex justify-content-center align-items-center p-3">
+        <img src="https://i.pinimg.com/736x/0f/66/12/0f661291431eadd5a240d9ca4d028652.jpg" alt="Avatar" class="img-fluid rounded-circle" style="width: 150px; height: 150px; object-fit: cover;" />
       </div>
+
       <div class="col-md-8">
         <div class="card-body">
-          <h2 class="card-title">{{ user.pseudo }}</h2>
-          <p class="card-text">Classement : <strong>{{ user.rank }}</strong></p>
+          <h2 class="card-title mb-4">Profil du joueur</h2>
+
+          <form>
+            <div class="mb-3">
+              <label for="pseudo" class="form-label">Nom d'utilisateur</label>
+              <input type="text" class="form-control" id="pseudo" [(ngModel)]="player.name" name="pseudo" [readonly]="!editMode">
+            </div>
+
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" class="form-control" id="email" [(ngModel)]="player.email" name="email" [readonly]="!editMode">
+            </div>
+
+            <div class="mb-3">
+              <label for="createdAt" class="form-label">Date de création</label>
+              <input type="text" class="form-control" id="createdAt" [value]="player.createAt | date:'medium'" readonly>
+            </div>
+
+            <div class="mb-3">
+              <label for="updatedAt" class="form-label">Dernière mise à jour</label>
+              <input type="text" class="form-control" id="updatedAt" [value]="player.lastEditAt | date:'medium'" readonly>  
+            </div>
+
+            <div class="mt-4">
+              <button type="button" class="btn btn-outline-warning" (click)="changePassword()">
+                Changer le mot de passe
+              </button>
+            </div>
+          </form>
         </div>
       </div>
+    </div>
+
+    <div class="card-footer">
+      <h5>Résultats des jeux :</h5>
+      <table class="table table-striped mt-2">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Points gagné</th>
+            <th>Utilisation d'indice</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let result of player.results">
+            <td>{{ result.daily.createFor | date:'short' }}</td>
+            <td>{{ result.points }}</td>
+            <td>{{ result.useHint }}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>

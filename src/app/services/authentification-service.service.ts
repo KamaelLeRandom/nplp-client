@@ -28,16 +28,17 @@ export class AuthentificationService {
 
   login(name: string, password: string) {
     localStorage.setItem('token', '');
-    this.http
+    return this.http
       .post<PlayerInterface>(`${this.baseUrl}/login`, { name, password })
       .subscribe(({
         next: (response) => {
           localStorage.setItem('token', response.token)
           this.currentPlayerSig.set(response);
-          this.router.navigateByUrl('/');
+          this.router.navigateByUrl('/home');
+          return '';
         },
         error: (error) => {
-          console.log(error);
+          return error;
         }
       }));
   }

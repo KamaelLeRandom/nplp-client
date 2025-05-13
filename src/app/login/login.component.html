@@ -1,32 +1,37 @@
 <div class="d-flex justify-content-center">
-    <form style="background-color: #f8f9fa; padding: 20px; border-radius: 8px; border: 2px solid #e83e8c;">
-      <div data-mdb-input-init class="form-outline mb-4">
-        <label class="form-label" for="form2Example1">Identifiant*</label>
-        <input type="email" id="form2Example1" class="form-control" [(ngModel)]="loginObj.name" [ngModelOptions]="{ standalone: true }" />
+  <form style="background-color: #f8f9fa; padding: 20px; border-radius: 8px; border: 2px solid #e83e8c;">
+    
+    <!-- Zone d'affichage de l'erreur -->
+    <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
+      {{ errorMessage }}
+    </div>
+
+    <div data-mdb-input-init class="form-outline mb-4">
+      <label class="form-label" for="form2Example1">Identifiant*</label>
+      <input type="email" id="form2Example1" class="form-control" [(ngModel)]="loginObj.name" [ngModelOptions]="{ standalone: true }" />
+    </div>
+
+    <div data-mdb-input-init class="form-outline mb-4">
+      <label class="form-label" for="form2Example2">Mot de passe*</label>
+      <input type="password" id="form2Example2" class="form-control" [(ngModel)]="loginObj.password" [ngModelOptions]="{ standalone: true }"/>
+    </div>
+
+    <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4" style="background-color: #6f42c1; color: white;" (click)="onLogin()">Se connecter</button>
+
+    <div class="text-center">
+      <p>Pas encore de compte ? <a href="#!">Inscris-toi !</a></p>
+    </div>
+
+    <div class="form-outline mb-4">
+      <label class="form-label" for="forgotEmail">Adresse e-mail pour réinitialisation</label>
+      <input type="email" id="email" class="form-control"
+            [(ngModel)]="email" [ngModelOptions]="{ standalone: true }" />
+    </div>
+
+    <div class="row mb-4">
+      <div class="col">
+        <button (click)="onForgotPassword()">Mot de passe oublié ?</button>
       </div>
-
-      <div data-mdb-input-init class="form-outline mb-4">
-        <label class="form-label" for="form2Example2">Mot de passe*</label>
-        <input type="password" id="form2Example2" class="form-control" [(ngModel)]="loginObj.password" [ngModelOptions]="{ standalone: true }"/>
-      </div>
-
-      <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4" style="background-color: #6f42c1; color: white;" (click)="onLogin()">Se connecter</button>
-
-      <div class="text-center">
-        <p>Pas encore de compte ? <a href="#!">Inscris-toi !</a></p>
-      </div>
-
-      <div class="form-outline mb-4">
-        <label class="form-label" for="forgotEmail">Adresse e-mail pour réinitialisation</label>
-        <input type="email" id="email" class="form-control"
-              [(ngModel)]="email" [ngModelOptions]="{ standalone: true }" />
-      </div>
-
-      <div class="row mb-4">
-        <div class="col">
-          <button (click)="onForgotPassword()">Mot de passe oublié ?</button>
-        </div>
-      </div>
-
-    </form>
+    </div>
+  </form>
 </div>

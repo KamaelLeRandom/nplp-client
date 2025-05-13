@@ -13,6 +13,11 @@ import { AuthentificationService } from '../services/authentification-service.se
 })
 export class NavBarComponent {
   authService = inject(AuthentificationService);
+  isCollapsed = true;
 
   constructor() { }
+
+  toggleNavbar() {
+    this.isCollapsed = !this.isCollapsed;
+  }
 }

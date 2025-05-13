@@ -1,21 +1,59 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
+import { FormsModule, NgModel } from '@angular/forms';
+import { PlayerInterface } from '../model/player-interface';
+import { AuthentificationService } from '../services/authentification-service.service';
+import { CommonModule, NgFor, registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
+
+registerLocaleData(localeFr, 'fr')
 
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [],
+  imports: [FormsModule, CommonModule, NgFor],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.scss'
 })
-export class ProfileComponent {
-  user = {
-    pseudo: 'Kamael',
-    arrivalDate: new Date('2023-02-15'),
-    avatarUrl: 'https://64.media.tumblr.com/ad2d177a7920d159b2219d1f57ca4212/99a902d475c1a44f-4f/s500x750/ba5bb1b0dae495620fbaa84cd10d4f27c9b0e6f3.jpg',
-    rank: 42,
-    history: [
-      { date: new Date('2024-05-01'), description: 'Gagné un tournoi' },
-      { date: new Date('2024-03-20'), description: 'Monté au rang 42' },
-    ],
-  };
+export class ProfileComponent implements OnInit {
+  authService = inject(AuthentificationService);
+  player: PlayerInterface = {} as PlayerInterface
+  editMode = false;
+
+  ngOnInit(): void {
+    if (this.authService.currentPlayerSig() !== null && this.authService.currentPlayerSig() !== undefined)
+      this.player = this.authService.currentPlayerSig() as PlayerInterface;
+  }
+
+  toggleEdit(): void {
+    this.editMode = !this.editMode;
+
+    if (!this.editMode)
+      this.resetForm();
+  }
+
+  resetForm(): void {
+    if (this.authService.currentPlayerSig() !== null && this.authService.currentPlayerSig() !== undefined)
+      this.player = this.authService.currentPlayerSig() as PlayerInterface;
+  }
+
+  saveProfile(): void {
+    this.editMode = false;
+    this.player.lastEditAt = new Date();
+    
+    alert('Profil sauvegardé avec succès !');
+  }
+
+  changePassword(): void {
+    alert('Fonctionnalité de changement de mot de passe à implémenter ici.');
+  }
+
+  get formattedCreateDate(): string {
+    const date = new Date(this.player.createAt);
+    return date.toLocaleDateString('fr-FR', { year: 'numeric', month: 'long', day: 'numeric' });
+  }
+
+  get formattedEditDate(): string {
+    const date = new Date(this.player.lastEditAt);
+    return date.toLocaleDateString('fr-FR', { year: 'numeric', month: 'long', day: 'numeric' });
+  }
 }

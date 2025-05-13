@@ -1,62 +1,59 @@
 <nav class="navbar navbar-expand-lg navbar-light background-grey">
-
   <div class="container-fluid">
+    <a class="navbar-brand text-purple" routerLink="/home">N'oubliez pas les Paroles</a>
 
-    <a class="navbar-brand text-purple" href="#">N'oubliez pas les Paroles</a>
+    <button class="navbar-toggler" type="button" (click)="toggleNavbar()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mb-2 mb-lg-0">
+    <div [class.collapse]="isCollapsed" class="navbar-collapse">
+      <ul class="navbar-nav mb-2 mb-lg-0 flex-column flex-lg-row w-100">
         <li class="nav-item">
-          <a class="nav-link" routerLink="/home" routerLinkActive="text-pink">Accueil</a>
+          <a class="nav-link" routerLinkActive="text-pink" routerLink="/home">
+            Accueil
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="text-pink" routerLink="/song">
+            Chansons
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="text-pink" routerLink="/author">
+            Chanteurs
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="text-pink" routerLink="/leaderboard">
+            Classement
+          </a>
         </li>
       </ul>
 
-      <ul class="navbar-nav mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/song" routerLinkActive="text-pink">Chansons</a>
-        </li>
-      </ul>
-
-      <ul class="navbar-nav mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/author" routerLinkActive="text-pink">Chanteurs</a>
-        </li>
-      </ul>
-
-      <ul class="navbar-nav mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/leaderboard" routerLinkActive="text-pink">Classement</a>
-        </li>
-      </ul>
-
-      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-
+      <ul class="navbar-nav ms-auto mt-2 mt-lg-0 flex-column flex-lg-row justify-content-end w-100">
         <ng-container *ngIf="authService.currentPlayerSig()">
           <li class="nav-item">
             <a class="nav-link" routerLink="/profile">
-              <i class="bi bi-person-circle"></i>
-              {{ authService.currentPlayerSig()?.name }}
+              <i class="bi bi-person-circle"></i> {{ authService.currentPlayerSig()?.name }}
             </a>
           </li>
-
           <li class="nav-item">
-            <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4" (click)="authService.logout()">Déconnexion</button>
+            <button class="btn btn-primary w-100" (click)="authService.logout()">
+              Déconnexion
+            </button>
           </li>
         </ng-container>
-
-
         <ng-container *ngIf="!authService.currentPlayerSig()">
-            <li class="nav-item">
-              <a class="nav-link" routerLink="/login">
-                Connexion
-              </a>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link" routerLink="/register">
-                Inscription
-              </a>
-            </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/login">
+              Connexion
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/register">
+              Inscription
+            </a>
+          </li>
         </ng-container>
       </ul>
     </div>

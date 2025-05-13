@@ -48,7 +48,7 @@ export class GameComponent {
   cancelGame() {
     const confirmed = window.confirm('Es-tu sûr de vouloir quitter la partie ?');
     if (confirmed) {
-      this.router.navigateByUrl('/');
+      this.router.navigateByUrl('/home');
     }
   }
 
